@@ -14,8 +14,9 @@ app.use(express.json());
 
 // Points our server to a series of route files.
 // Gives our server a map of how to response when user visits or request data from various URLS.
+
 // require("./routes/apiRoutes")(app);
-// require("./routes/htmlRoutes")(app);
+require("./routes/htmlRoutes")(app);
 
 
 // App listener that "Starts" our server
