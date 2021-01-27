@@ -22,6 +22,9 @@ module.exports = function (app) {
             var noteInfo = JSON.parse(data)
 
             noteInfo.push(notes)
+            // Create unique ids for each note
+            noteInfo.forEach( function(note, id){
+            note.id = id + 1});
 
             // stringifys new notes and adds onto the db.json file.
             fs.writeFile('db/db.json', JSON.stringify(noteInfo), 'utf8', function (err) {
