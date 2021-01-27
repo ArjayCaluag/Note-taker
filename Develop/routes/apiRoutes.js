@@ -23,8 +23,9 @@ module.exports = function (app) {
 
             noteInfo.push(notes)
             // Create unique ids for each note
-            noteInfo.forEach( function(note, id){
-            note.id = id + 1});
+            noteInfo.forEach(function (note, id) {
+                note.id = id + 1
+            });
             console.log(noteInfo);
 
             // stringifys new notes and adds onto the db.json file.
@@ -39,9 +40,9 @@ module.exports = function (app) {
     // Path with the parameter id route
     app.delete("/api/notes/:id", function (req, res) {
         var emptyNote = req.params.id
-        
 
-        fs.readFile("db/db.json", "utf8", function (err,data) {
+
+        fs.readFile("db/db.json", "utf8", function (err, data) {
             if (err) throw err
 
             var noteDelete = JSON.parse(data)
@@ -51,9 +52,9 @@ module.exports = function (app) {
             noteDelete.splice(index, 1);
             console.log("Note at index of " + index + " deleted.");
             console.log(noteDelete);
-            
+
             // rewrite db.json file once notes are deleted
-            fs.writeFile("db/db.json", JSON.stringify(noteDelete), "utf8", function(err){
+            fs.writeFile("db/db.json", JSON.stringify(noteDelete), "utf8", function (err) {
                 if (err) throw err
             })
         })
